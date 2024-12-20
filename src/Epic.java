@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class Epic extends Task {
+public class Epic extends Task {
+
     private List<Subtask> subtasks;
 
-    public Epic(String title, String description, int id) {
-        super(title, description, id);
+    public Epic(String title, String description) {
+        super(title, description);
         this.subtasks = new ArrayList<>();
     }
 
@@ -17,29 +18,6 @@ class Epic extends Task {
         return subtasks;
     }
 
-    public void updateStatus() {
-        if (subtasks.isEmpty()) {
-            setStatus(TaskStatus.NEW);
-            return;
-        }
-        boolean allDone = true;
-        boolean allNew = true;
-        for (Subtask subtask : subtasks) {
-            if (subtask.getStatus() != TaskStatus.DONE) {
-                allDone = false;
-            }
-            if (subtask.getStatus() != TaskStatus.NEW) {
-                allNew = false;
-            }
-        }
-        if (allDone) {
-            setStatus(TaskStatus.DONE);
-        } else if (allNew) {
-            setStatus(TaskStatus.NEW);
-        } else {
-            setStatus(TaskStatus.IN_PROGRESS);
-        }
-    }
 
     @Override
     public String toString() {
