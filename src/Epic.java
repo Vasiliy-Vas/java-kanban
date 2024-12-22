@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Epic extends Task {
 
@@ -22,11 +23,27 @@ public class Epic extends Task {
     @Override
     public String toString() {
         return "Epic{" +
-                "subtasks=" + subtasks +
-                ", title='" + getTitle() + '\'' +
-                ", description='" + getDescription() + '\'' +
+                "subtasks=" + subtasks.stream().map(Subtask::getId).collect(Collectors.toList()) +
+                ", title='" + getTitle() + '\''
+                +
                 ", id=" + getId() +
                 ", status=" + getStatus() +
                 '}';
+    }
+
+    public void updateStatus() {
+        if (subtasks.isEmpty()) {
+            setStatus(TaskStatus.NEW);
+            return;
+        }
+        long doneCount = subtasks.stream().filter(subtask -> subtask.getStatus() == TaskStatus.DONE).count();
+        if (doneCount == subtasks.size()) {
+            setStatus(TaskStatus.DONE);
+        } else if (doneCount > 0) {
+            setStatus(TaskStatus.IN_PROGRESS);
+        } else {
+            setStatus(TaskStatus.NEW);
+        }
+
     }
 }
