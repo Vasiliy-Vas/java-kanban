@@ -30,12 +30,12 @@ public class Epic extends Task {
                 ", status=" + getStatus() +
                 '}';
     }
-
     public void updateStatus() {
         if (subtasks.isEmpty()) {
             setStatus(TaskStatus.NEW);
             return;
         }
+
         long doneCount = subtasks.stream().filter(subtask -> subtask.getStatus() == TaskStatus.DONE).count();
         if (doneCount == subtasks.size()) {
             setStatus(TaskStatus.DONE);
@@ -44,6 +44,5 @@ public class Epic extends Task {
         } else {
             setStatus(TaskStatus.NEW);
         }
-
     }
 }

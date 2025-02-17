@@ -1,8 +1,9 @@
 public class Task {
-    private String title;
-    private String description;
-    private int id;
-    private TaskStatus status;
+
+    protected String title;
+    protected String description;
+    protected int id;
+    protected TaskStatus status;
 
     public Task(String title, String description) {
         this.title = title;
@@ -42,6 +43,10 @@ public class Task {
         this.status = status;
     }
 
+    public void markAsDone() {
+        this.status = TaskStatus.DONE;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -52,15 +57,5 @@ public class Task {
     @Override
     public int hashCode() {
         return Integer.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Task{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", id=" + id +
-                ", status=" + status +
-                '}';
     }
 }
