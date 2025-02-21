@@ -1,28 +1,20 @@
 import java.util.ArrayList;
 import java.util.List;
-
-public class InMemoryHistoryManager implements HistoryManager {
-    private List<Task> history;
-
-    public InMemoryHistoryManager() {
-        history = new ArrayList<>();
-    }
+public class InMemoryHistoryManager extends HistoryManager {
+    private final List<Task> history = new ArrayList<>();
+    private static final int MAX_HISTORY_SIZE = 10;
 
     @Override
     public void add(Task task) {
-        if (history.size() >= 10) {
-            history.remove(0);
+        if (history.size() >= MAX_HISTORY_SIZE) {
+            history.remove(0); // Удаляем старую задачу, если превышен лимит
         }
         history.add(task);
     }
 
     @Override
-    public List<Task> getHistory() {
+    public List<String> getHistory() {
         return new ArrayList<>(history);
     }
-
-    @Override
-    public void remove(int id) {
-        history.removeIf(task -> task.getId() == id);
-    }
 }
+
