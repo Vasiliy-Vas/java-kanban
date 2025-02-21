@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         TaskManager manager = Managers.getDefault();
-        HistoryManager historyManager = new InMemoryHistoryManager(); // Создаем экземпляр менеджера истории
+        HistoryManager historyManager = new InMemoryHistoryManager();
 
         Epic epic = new Epic("Переезд", "Организация переезда на новую квартиру.");
         manager.createEpic(epic);

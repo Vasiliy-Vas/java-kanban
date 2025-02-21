@@ -7,7 +7,7 @@ public class InMemoryHistoryManager extends HistoryManager {
     @Override
     public void add(Task task) {
         if (history.size() >= MAX_HISTORY_SIZE) {
-            history.remove(0); // Удаляем старую задачу, если превышен лимит
+            history.remove(0);
         }
         history.add(task);
     }
