@@ -1,7 +1,7 @@
 public class Main {
+
     public static void main(String[] args) {
-        TaskManager manager = Managers.getDefault();
-        HistoryManager historyManager = new InMemoryHistoryManager();
+        TaskManager manager = new InMemoryTaskManager();
 
         Epic epic = new Epic("Переезд", "Организация переезда на новую квартиру.");
         manager.createEpic(epic);
@@ -14,17 +14,6 @@ public class Main {
         subtask2.setStatus(TaskStatus.DONE);
         subtask3.setStatus(TaskStatus.DONE);
 
-        manager.createSubtask(subtask1);
-        manager.createSubtask(subtask2);
-        manager.createSubtask(subtask3);
-
-        ((InMemoryHistoryManager) historyManager).add(epic);
-        ((InMemoryHistoryManager) historyManager).add(subtask1);
-        ((InMemoryHistoryManager) historyManager).add(subtask2);
-        ((InMemoryHistoryManager) historyManager).add(subtask3);
-
-        System.out.println("История просмотров:");
-        System.out.println(historyManager.getHistory());
 
         System.out.println(epic);
     }

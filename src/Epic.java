@@ -7,7 +7,7 @@ public class Epic extends Task {
     private List<Subtask> subtasks;
 
     public Epic(String title, String description) {
-        super(title, description);
+        super(task1.getId(), title, description, TaskStatus.NEW);
         this.subtasks = new ArrayList<>();
     }
 
@@ -29,20 +29,5 @@ public class Epic extends Task {
                 ", id=" + getId() +
                 ", status=" + getStatus() +
                 '}';
-    }
-    public void updateStatus() {
-        if (subtasks.isEmpty()) {
-            setStatus(TaskStatus.NEW);
-            return;
-        }
-
-        long doneCount = subtasks.stream().filter(subtask -> subtask.getStatus() == TaskStatus.DONE).count();
-        if (doneCount == subtasks.size()) {
-            setStatus(TaskStatus.DONE);
-        } else if (doneCount > 0) {
-            setStatus(TaskStatus.IN_PROGRESS);
-        } else {
-            setStatus(TaskStatus.NEW);
-        }
     }
 }

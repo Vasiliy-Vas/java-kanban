@@ -1,24 +1,12 @@
-import java.util.ArrayList;
 import java.util.List;
 
-public abstract class HistoryManager {
-    private List<String> history;
+public interface HistoryManager {
 
-    public HistoryManager() {
-        this.history = new ArrayList<>();
-    }
+    void addView(Task task);
 
-    public void addView(String item) {
-        history.add(item);
-    }
+    List<Task> getHistory();
 
-    public abstract void add(Task task);
+    void clearHistory();
 
-    public List<String> getHistory() {
-        return new ArrayList<>(history);
-    }
-
-    public void clearHistory() {
-        history.clear();
-    }
+    void add(Task task1);
 }
