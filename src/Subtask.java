@@ -1,8 +1,10 @@
+import java.security.cert.Extension;
+
 public class Subtask extends Task {
 
     private int epicId;
 
-    public Subtask(String title, String description, int epicId) {
+    public Subtask(String title, String description, int epicId, Extension task1) {
         super(task1.getId(), title, description, TaskStatus.NEW);
         this.epicId = epicId;
     }
