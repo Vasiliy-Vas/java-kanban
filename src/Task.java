@@ -10,6 +10,13 @@ public class Task {
         this.status = TaskStatus.NEW;
     }
 
+    public Task() {
+
+    }
+
+    public Task(String title, String description) {
+    }
+
     public String getTitle() {
         return title;
     }

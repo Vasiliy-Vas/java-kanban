@@ -1,10 +1,9 @@
 public class Managers {
-
-    public static HistoryManager getDefaultHistory() {
-        return new InMemoryHistoryManager();
+    public static TaskManager getDefault() {
+        return new InMemoryTaskManager(); // Возвращаем реализацию InMemoryTaskManager
     }
 
-    public static InMemoryTaskManager getDefaultTaskManager() {
-        return new InMemoryTaskManager();
+    public static HistoryManager getDefaultHistory() {
+        return new InMemoryHistoryManager(); // Возвращаем реализацию InMemoryHistoryManager
     }
 }

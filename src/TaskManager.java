@@ -10,7 +10,7 @@ public interface TaskManager {
 
     Task createTask(Task task);
 
-    void createEpic(Epic epic);
+    int createEpic(Epic epic);
 
     void addSubtask(Subtask subtask);
 
@@ -44,7 +44,7 @@ public interface TaskManager {
 
     void updateStatus();
 
-    void getSubtask(int id);
+    Subtask getSubtask(int id);
 
     Subtask getSubtask(int id, int epicId);
 
