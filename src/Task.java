@@ -4,17 +4,17 @@ public class Task {
     private int id;
     private TaskStatus status;
 
-    public Task(String id, String title, String description, TaskStatus aNew) {
+    public Task() {
+        this.id = id;
         this.title = title;
         this.description = description;
-        this.status = TaskStatus.NEW;
+        this.status = status;
     }
 
-    public Task() {
-
+    public Task(int i, String title, String description, TaskStatus taskStatus) {
     }
 
-    public Task(String title, String description) {
+    public Task(String s, String s1) {
     }
 
     public String getTitle() {
@@ -48,7 +48,6 @@ public class Task {
     public void setStatus(TaskStatus status) {
         this.status = status;
     }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

@@ -7,33 +7,17 @@ public class Epic extends Task {
     private final List<Subtask> subtasks;
 
     public Epic(String title, String description) {
-        super(title, description);
+        super();
         this.subtasks = new ArrayList<>();
     }
 
-    public void addSubtask(Subtask subtask) {
+    public boolean addSubtask(Subtask subtask) {
         subtasks.add(subtask);
+        return false;
     }
 
     public List<Subtask> getSubtasks() {
         return subtasks;
-    }
-
-    public void updateStatus() {
-        if (subtasks.isEmpty()) {
-            setStatus(TaskStatus.NEW);
-            return;
-        }
-        boolean allDone = subtasks.stream().allMatch(subtask -> subtask.getStatus() == TaskStatus.DONE);
-        boolean anyInProgress = subtasks.stream().anyMatch(subtask -> subtask.getStatus() == TaskStatus.IN_PROGRESS);
-
-        if (allDone) {
-            setStatus(TaskStatus.DONE);
-        } else if (anyInProgress) {
-            setStatus(TaskStatus.IN_PROGRESS);
-        } else {
-            setStatus(TaskStatus.NEW);
-        }
     }
 
     @Override
@@ -44,5 +28,11 @@ public class Epic extends Task {
                 ", id=" + getId() +
                 ", status=" + getStatus() +
                 '}';
+    }
+
+    public void removeSubtask(Subtask subtask) {
+    }
+
+    public void updateStatus() {
     }
 }
