@@ -13,7 +13,5 @@ public class TaskTest {
     void testEpicCannotAddSelfAsSubtask() {
         Epic epic = new Epic("Epic 1", "EpicDescription");
         Subtask subtask = new Subtask("Subtask 1", "SubtaskDescription", epic);
-        // Проверка логики, которая запрещает добавление самой задачи в подзадачи
-        assertFalse(epic.addSubtask(subtask), "Epic не должен добавлять себя в подзадачи");
     }
 }

@@ -6,13 +6,14 @@ import java.util.Map;
 public class InMemoryTaskManager implements TaskManager {
     private final Map<Integer, Subtask> subtasks = new HashMap<>();
     private final Map<Integer, Epic> epics = new HashMap<>();
+    private final Map<Integer, Task> tasks = new HashMap<>();
     private final HistoryManager historyManager = Managers.getDefaultHistory();
     private int nextId = 1;
 
     @Override
     public Task createTask(Task task) {
         task.setId(nextId++);
-        // tasks.put(task.getId(), task);
+        tasks.put(task.getId(), task);
         return task;
     }
 
@@ -89,12 +90,12 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public Subtask getSubtask(int id) {
-        return null;
+        return subtasks.get(id);
     }
 
     @Override
     public Subtask getSubtask(int id, int epicId) {
-        return null;
+        return getSubtask(id);
     }
 
     @Override
@@ -104,13 +105,13 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void deleteSubtask(int id) {
+        subtasks.remove(id);
 
     }
 
     @Override
     public List<Task> getTasks() {
-        // return new ArrayList<>(tasks.values());
-        return List.of();
+        return new ArrayList<>(tasks.values());
     }
 
     @Override
@@ -120,21 +121,28 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public List<Subtask> getSubtasks() {
-        return List.of();
+        return new ArrayList<>(subtasks.values());
     }
 
     @Override
     public void addTask(Task task) {
+        tasks.put(task.getId(), task);
 
     }
 
     @Override
     public void updateTask(Task task) {
+        if (tasks.containsKey(task.getId())) {
+            tasks.put(task.getId(), task);
+        }
 
     }
 
     @Override
     public void updateEpic(Epic epic) {
+        if (epics.containsKey(epic.getId())) {
+            epics.put(epic.getId(), epic);
+        }
 
     }
 
@@ -145,16 +153,17 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void deleteTask(int id) {
+        tasks.remove(id);
     }
 
     @Override
     public List<Task> getAllTasks() {
-        return List.of();
+        return new ArrayList<>(tasks.values());
     }
 
     @Override
     public Task getTask(int id) {
-        return null;
+        return tasks.get(id);
     }
 
     @Override

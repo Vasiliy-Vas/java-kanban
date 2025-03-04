@@ -7,13 +7,13 @@ public class Epic extends Task {
     private final List<Subtask> subtasks;
 
     public Epic(String title, String description) {
-        super();
+        super(title, description);
         this.subtasks = new ArrayList<>();
     }
 
-    public boolean addSubtask(Subtask subtask) {
+    public Subtask addSubtask(Subtask subtask) {
         subtasks.add(subtask);
-        return false;
+        return subtask;
     }
 
     public List<Subtask> getSubtasks() {
@@ -31,8 +31,10 @@ public class Epic extends Task {
     }
 
     public void removeSubtask(Subtask subtask) {
+        subtasks.remove(subtask);
     }
 
     public void updateStatus() {
+
     }
 }
