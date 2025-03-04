@@ -4,17 +4,10 @@ public class Task {
     private int id;
     private TaskStatus status;
 
-    public Task() {
-        this.id = id;
+    public Task(String title, String description) {
         this.title = title;
         this.description = description;
-        this.status = status;
-    }
-
-    public Task(int i, String title, String description, TaskStatus taskStatus) {
-    }
-
-    public Task(String s, String s1) {
+        this.status = TaskStatus.NEW;
     }
 
     public String getTitle() {

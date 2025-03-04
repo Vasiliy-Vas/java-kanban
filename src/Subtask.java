@@ -4,16 +4,18 @@ public class Subtask extends Task {
 
     private int epicId;
 
-    public Subtask(String title, String description, int epicId, Extension task1) {
-        super(Integer.parseInt(task1.getId()), title, description, TaskStatus.NEW);
+    public Subtask(String title, String description, int epicId) {
+        super(title, description);
         this.epicId = epicId;
     }
 
-    public Subtask(String собратьКоробки, String description) {
-        super();
+    public Subtask(String title, String description) {
+        super(title, description);
     }
 
-    public Subtask(String s, String subtaskDescription, Epic epic) {
+    public Subtask(String title, String subtaskDescription, Epic epic) {
+        super(title, subtaskDescription);
+        this.epicId = epic.getId();
     }
 
     public int getEpicId() {
