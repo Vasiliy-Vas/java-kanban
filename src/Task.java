@@ -41,6 +41,7 @@ public class Task {
     public void setStatus(TaskStatus status) {
         this.status = status;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

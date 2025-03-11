@@ -107,7 +107,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     }
 
-   @Override
+    @Override
     public void updateSubtask(Subtask subtask) {
         if (subtasks.containsKey(subtask.getId())) {
             subtasks.put(subtask.getId(), subtask);
@@ -178,6 +178,7 @@ public class InMemoryTaskManager implements TaskManager {
     public List<Epic> getEpics() {
         return getAllEpics();
     }
+
     @Override
     public List<Subtask> getSubtasks() {
         return new ArrayList<>(subtasks.values());

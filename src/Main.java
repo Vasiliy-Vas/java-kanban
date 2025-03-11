@@ -34,7 +34,7 @@ public class Main {
 
         TaskManager manager = Managers.getDefault();
 
-        Epic epic1 = new Epic("Эпик 1","Нужно сделать");
+        Epic epic1 = new Epic("Эпик 1", "Нужно сделать");
         manager.createEpic(epic1);
 
         Subtask subtask1 = new Subtask("Subtask1 создания ", "Написать что то ", epic1.getId());
