@@ -33,29 +33,32 @@ public class Main {
     public static void main(String[] args) {
 
         TaskManager manager = Managers.getDefault();
-        TaskManager taskManager = Managers.getDefault();
 
         Epic epic1 = new Epic("Эпик 1","Нужно сделать");
-        taskManager.createEpic(epic1);
+        manager.createEpic(epic1);
 
         Subtask subtask1 = new Subtask("Subtask1 создания ", "Написать что то ", epic1.getId());
-        taskManager.createSubtask(subtask1);
+        manager.createSubtask(subtask1);
 
         Subtask subtask2 = new Subtask("Subtask2 создания ", "Написать что то ", epic1.getId());
-        taskManager.createSubtask(subtask2);
+        manager.createSubtask(subtask2);
 
         System.out.println(epic1);
 
         subtask1.setStatus(TaskStatus.IN_PROGRESS);
-        taskManager.updateSubtask(subtask1);
+        manager.updateSubtask(subtask1);
         System.out.println(epic1);
 
         subtask2.setStatus(TaskStatus.DONE);
-        taskManager.updateSubtask(subtask2);
+        manager.updateSubtask(subtask2);
         System.out.println(epic1);
 
         subtask1.setStatus(TaskStatus.DONE);
-        taskManager.updateSubtask(subtask1);
+        manager.updateSubtask(subtask1);
+        System.out.println(epic1);
+
+        subtask2.setStatus(TaskStatus.DONE);
+        manager.updateSubtask(subtask2);
         System.out.println(epic1);
 
         Epic epic = new Epic("Переезд", "Организация переезда на новую квартиру.");
@@ -65,9 +68,9 @@ public class Main {
         Subtask subtask4 = new Subtask("Упаковать кошку", "Убедиться, что кошка в переноске.", epic.getId());
         Subtask subtask5 = new Subtask("Сказать слова прощания", "Попрощаться с соседями.", epic.getId());
 
-        manager.createSubtask(subtask3, epic.getId());
-        manager.createSubtask(subtask4, epic.getId());
-        manager.createSubtask(subtask5, epic.getId());
+        manager.createSubtask(subtask3);
+        manager.createSubtask(subtask4);
+        manager.createSubtask(subtask5);
 
         subtask3.setStatus(TaskStatus.DONE);
         subtask4.setStatus(TaskStatus.DONE);

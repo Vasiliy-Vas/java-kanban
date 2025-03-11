@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 
-
 public class InMemoryTaskManager implements TaskManager {
 
     private final Map<Integer, Subtask> subtasks = new HashMap<>();
@@ -25,20 +24,20 @@ public class InMemoryTaskManager implements TaskManager {
         if (epic != null) {
             List<Subtask> subtasks = epic.getSubtasks();
             if (subtasks.isEmpty()) {
-                epic.setStatus(Status.NEW);
+                epic.setStatus(TaskStatus.NEW);
             } else {
                 int completedCount = 0;
                 for (Subtask subtask : subtasks) {
-                    if (subtask.getStatus() == Status.DONE) {
+                    if (subtask.getStatus() == TaskStatus.DONE) {
                         completedCount++;
                     }
                 }
                 if (completedCount == subtasks.size()) {
-                    epic.setStatus(Status.DONE);
+                    epic.setStatus(TaskStatus.DONE);
                 } else if (completedCount > 0) {
-                    epic.setStatus(Status.IN_PROGRESS);
+                    epic.setStatus(TaskStatus.IN_PROGRESS);
                 } else {
-                    epic.setStatus(Status.NEW);
+                    epic.setStatus(TaskStatus.NEW);
                 }
             }
         }
@@ -108,7 +107,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     }
 
-    @Override
+   @Override
     public void updateSubtask(Subtask subtask) {
         if (subtasks.containsKey(subtask.getId())) {
             subtasks.put(subtask.getId(), subtask);
